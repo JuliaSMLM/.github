@@ -2,7 +2,7 @@
 
 **Julia tools for single-molecule localization microscopy (SMLM).**
 
-![Diffraction-limited vs single-molecule localization rendering of "JuliaSMLM"](https://raw.githubusercontent.com/JuliaSMLM/SMLMDocs.jl/main/docs/src/assets/juliasmlm_hero.png)
+![Diffraction-limited vs single-molecule localization rendering of "JuliaSMLM"](https://juliasmlm.github.io/SMLMDocs.jl/dev/assets/juliasmlm_hero.png)
 
 JuliaSMLM is a collection of composable, high-performance Julia packages covering
 the full SMLM workflow — from simulating raw camera data, through localization and
