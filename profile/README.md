@@ -4,80 +4,40 @@
 
 ![Diffraction-limited vs single-molecule localization rendering of "JuliaSMLM"](https://juliasmlm.github.io/SMLMDocs.jl/dev/assets/juliasmlm_hero.png)
 
-JuliaSMLM is a collection of composable, high-performance Julia packages covering
-the full SMLM workflow — from simulating raw camera data, through localization and
-post-processing, to rendering and quantitative analysis. Packages share a common
-data model ([SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl)) so they snap
-together into pipelines, and performance-critical steps offer automatic GPU
-acceleration with CPU fallback.
+Composable, high-performance Julia packages spanning the full SMLM workflow —
+simulation, localization, post-processing, rendering, and analysis. Packages share a
+common data model ([SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl)) and offer
+automatic GPU acceleration with CPU fallback. All are registered in the Julia General
+registry — install any with `Pkg.add("PackageName")`.
 
 ## Packages
 
-All packages below are registered in the Julia General registry — install any of
-them with `using Pkg; Pkg.add("PackageName")`.
-
-### Core
-
-| Package | Description |
-| --- | --- |
-| [SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl) | Foundational data types (emitters, cameras, SMLD containers) shared across the ecosystem. Most packages re-export what you need. |
-| [MicroscopePSFs.jl](https://github.com/JuliaSMLM/MicroscopePSFs.jl) | 2D/3D point-spread-function models and pixel-integration tools for optical simulation and fitting. |
-
-### Simulation
-
-| Package | Description |
-| --- | --- |
-| [SMLMSim.jl](https://github.com/JuliaSMLM/SMLMSim.jl) | Simulate realistic SMLM data: static super-resolution patterns with blinking photophysics, and diffusion/interaction dynamics for single-particle tracking. |
-
-### Localization
-
-| Package | Description |
-| --- | --- |
-| [SMLMBoxer.jl](https://github.com/JuliaSMLM/SMLMBoxer.jl) | Particle detection and ROI extraction via difference-of-Gaussians filtering, with GPU acceleration and sCMOS variance weighting. |
-| [GaussMLE.jl](https://github.com/JuliaSMLM/GaussMLE.jl) | Fast maximum-likelihood fitting of Gaussian-PSF parameters, with automatic GPU acceleration. |
-
-### Post-processing
-
-| Package | Description |
-| --- | --- |
-| [SMLMFrameConnection.jl](https://github.com/JuliaSMLM/SMLMFrameConnection.jl) | Link localizations from the same blinking event across frames into single, higher-precision localizations. |
-| [SMLMDriftCorrection.jl](https://github.com/JuliaSMLM/SMLMDriftCorrection.jl) | Fiducial-free intra- and inter-dataset drift correction (2D/3D) via entropy minimization. |
-
-### Rendering & visualization
-
-| Package | Description |
-| --- | --- |
-| [SMLMRender.jl](https://github.com/JuliaSMLM/SMLMRender.jl) | Render point-cloud localizations into images (histogram, Gaussian-blob, or outline) with flexible color mapping. |
-| [SMLMView.jl](https://github.com/JuliaSMLM/SMLMView.jl) | WGLMakie-based interactive viewer for N-dimensional microscopy data. |
-
-### Analysis & metrics
-
-| Package | Description |
-| --- | --- |
-| [SMLMMetrics.jl](https://github.com/JuliaSMLM/SMLMMetrics.jl) | Standardized particle-tracking performance metrics (all 14 Chenouard measures) with optimal track pairing. |
+| Package | Stage | What it does |
+| --- | --- | --- |
+| [SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl) | Core | Shared data types: emitters, cameras, SMLD containers. |
+| [MicroscopePSFs.jl](https://github.com/JuliaSMLM/MicroscopePSFs.jl) | Core | 2D/3D point-spread-function models and pixel integration. |
+| [SMLMSim.jl](https://github.com/JuliaSMLM/SMLMSim.jl) | Simulation | Blinking super-resolution data and diffusion/tracking dynamics. |
+| [SMLMBoxer.jl](https://github.com/JuliaSMLM/SMLMBoxer.jl) | Localization | Particle detection / ROI extraction, GPU + sCMOS weighting. |
+| [GaussMLE.jl](https://github.com/JuliaSMLM/GaussMLE.jl) | Localization | Fast maximum-likelihood Gaussian-PSF fitting, GPU-accelerated. |
+| [SMLMFrameConnection.jl](https://github.com/JuliaSMLM/SMLMFrameConnection.jl) | Post-processing | Link multi-frame blinks into single, higher-precision localizations. |
+| [SMLMDriftCorrection.jl](https://github.com/JuliaSMLM/SMLMDriftCorrection.jl) | Post-processing | Fiducial-free 2D/3D drift correction via entropy minimization. |
+| [SMLMRender.jl](https://github.com/JuliaSMLM/SMLMRender.jl) | Rendering | Render localizations to images (histogram, Gaussian, outline). |
+| [SMLMView.jl](https://github.com/JuliaSMLM/SMLMView.jl) | Rendering | Interactive N-dimensional microscopy viewer (WGLMakie). |
+| [SMLMMetrics.jl](https://github.com/JuliaSMLM/SMLMMetrics.jl) | Analysis | Particle-tracking metrics (all 14 Chenouard measures). |
+| [SMLMClustering.jl](https://github.com/JuliaSMLM/SMLMClustering.jl) | Analysis | Clustering and spatial statistics (DBSCAN, HDBSCAN, Voronoi). |
+| [ModelContextProtocol.jl](https://github.com/JuliaSMLM/ModelContextProtocol.jl) | Tooling | Julia implementation of the Model Context Protocol (MCP). |
 
 ## Getting started
 
-Install the packages you need — for example, a simulate-then-render pipeline:
-
 ```julia
 using Pkg
-Pkg.add(["SMLMData", "SMLMSim", "SMLMRender"])
+Pkg.add(["SMLMData", "SMLMSim", "SMLMRender"])   # e.g. a simulate → render pipeline
 ```
 
-Most packages ship full documentation. Follow the **docs badge** in a repository,
-or browse the docs directly at `https://JuliaSMLM.github.io/<Package>.jl/stable`
-(for example, [SMLMData docs](https://JuliaSMLM.github.io/SMLMData.jl/stable)).
+Per-package docs live at `https://JuliaSMLM.github.io/<Package>.jl/stable` (e.g.
+[SMLMData](https://JuliaSMLM.github.io/SMLMData.jl/stable)). Ecosystem overview and
+shared conventions (such as pixel indexing):
+[JuliaSMLM.github.io/SMLMDocs.jl/dev](https://JuliaSMLM.github.io/SMLMDocs.jl/dev/).
 
-An ecosystem-wide overview — including shared conventions such as pixel indexing —
-lives at [JuliaSMLM.github.io/SMLMDocs.jl/dev](https://JuliaSMLM.github.io/SMLMDocs.jl/dev/).
-
-## Also from this org
-
-- [SMLMClustering.jl](https://github.com/JuliaSMLM/SMLMClustering.jl) — clustering and spatial-statistics backends (DBSCAN, HDBSCAN, Voronoi/SR-Tesseler, and more) for localization data.
-- [ModelContextProtocol.jl](https://github.com/JuliaSMLM/ModelContextProtocol.jl) — a Julia implementation of the Model Context Protocol (MCP) for integrating tools and resources with LLMs.
-
-## Contributing
-
-Issues and pull requests are welcome on any repository. Each package is developed
-and versioned independently and registered through the Julia General registry.
+Issues and pull requests are welcome on any repository — each is developed and
+versioned independently through the Julia General registry.
