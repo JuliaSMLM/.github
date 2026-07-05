@@ -10,6 +10,10 @@ common data model ([SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl)) and 
 automatic GPU acceleration with CPU fallback. All are registered in the Julia General
 registry — install any with `Pkg.add("PackageName")`.
 
+> **Under active development.** The JuliaSMLM ecosystem grows continuously — new
+> packages are added and existing ones refined over time, so expect this list to keep
+> expanding.
+
 ## Packages
 
 | Package | Stage | What it does |
