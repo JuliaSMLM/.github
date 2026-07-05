@@ -25,7 +25,6 @@ registry — install any with `Pkg.add("PackageName")`.
 | [SMLMDriftCorrection.jl](https://github.com/JuliaSMLM/SMLMDriftCorrection.jl) | Post-processing | Fiducial-free 2D/3D drift correction via entropy minimization. |
 | [SMLMRender.jl](https://github.com/JuliaSMLM/SMLMRender.jl) | Rendering | Render localizations to images (histogram, Gaussian, outline). |
 | [SMLMView.jl](https://github.com/JuliaSMLM/SMLMView.jl) | Rendering | Interactive N-dimensional microscopy viewer (WGLMakie). |
-| [SMLMMetrics.jl](https://github.com/JuliaSMLM/SMLMMetrics.jl) | Analysis | Particle-tracking metrics (all 14 Chenouard measures). |
 | [SMLMClustering.jl](https://github.com/JuliaSMLM/SMLMClustering.jl) | Analysis | Clustering and spatial statistics (DBSCAN, HDBSCAN, Voronoi). |
 | [ModelContextProtocol.jl](https://github.com/JuliaSMLM/ModelContextProtocol.jl) | Tooling | Julia implementation of the Model Context Protocol (MCP). |
 
