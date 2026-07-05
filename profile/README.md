@@ -7,8 +7,9 @@
 Composable, high-performance Julia packages spanning the full SMLM workflow —
 simulation, localization, post-processing, rendering, and analysis. Packages share a
 common data model ([SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl)) and offer
-automatic GPU acceleration with CPU fallback. All are registered in the Julia General
-registry — install any with `Pkg.add("PackageName")`.
+automatic GPU acceleration with CPU fallback. Most are registered in the Julia General
+registry — install with `Pkg.add("PackageName")`; newly public packages such as
+SMLMBaGoL install from GitHub until they're registered.
 
 ## Packages
 
@@ -20,6 +21,7 @@ registry — install any with `Pkg.add("PackageName")`.
 | [SMLMBoxer.jl](https://github.com/JuliaSMLM/SMLMBoxer.jl) | Localization | Particle detection / ROI extraction, GPU + sCMOS weighting. |
 | [GaussMLE.jl](https://github.com/JuliaSMLM/GaussMLE.jl) | Localization | Fast maximum-likelihood Gaussian-PSF fitting, GPU-accelerated. |
 | [SMLMFrameConnection.jl](https://github.com/JuliaSMLM/SMLMFrameConnection.jl) | Post-processing | Link multi-frame blinks into single, higher-precision localizations. |
+| [SMLMBaGoL.jl](https://github.com/JuliaSMLM/SMLMBaGoL.jl) | Post-processing | Bayesian Grouping of Localizations (BaGoL): merge an emitter's repeated blinks into single emitters, reaching precision beyond raw localizations. |
 | [SMLMDriftCorrection.jl](https://github.com/JuliaSMLM/SMLMDriftCorrection.jl) | Post-processing | Fiducial-free 2D/3D drift correction via entropy minimization. |
 | [SMLMRender.jl](https://github.com/JuliaSMLM/SMLMRender.jl) | Rendering | Render localizations to images (histogram, Gaussian, outline). |
 | [SMLMView.jl](https://github.com/JuliaSMLM/SMLMView.jl) | Rendering | Interactive N-dimensional microscopy viewer (WGLMakie). |
@@ -32,6 +34,7 @@ registry — install any with `Pkg.add("PackageName")`.
 ```julia
 using Pkg
 Pkg.add(["SMLMData", "SMLMSim", "SMLMRender"])   # e.g. a simulate → render pipeline
+Pkg.add(url="https://github.com/JuliaSMLM/SMLMBaGoL.jl")  # not yet in the General registry
 ```
 
 Per-package docs live at `https://JuliaSMLM.github.io/<Package>.jl/stable` (e.g.
@@ -40,4 +43,4 @@ shared conventions (such as pixel indexing):
 [JuliaSMLM.github.io/SMLMDocs.jl/dev](https://JuliaSMLM.github.io/SMLMDocs.jl/dev/).
 
 Issues and pull requests are welcome on any repository — each is developed and
-versioned independently through the Julia General registry.
+versioned independently, most through the Julia General registry.
