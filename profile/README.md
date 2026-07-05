@@ -7,14 +7,14 @@
 Composable, high-performance Julia packages spanning the full SMLM workflow —
 simulation, localization, post-processing, rendering, and analysis. Packages share a
 common data model ([SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl)) and offer
-automatic GPU acceleration with CPU fallback. Most are registered in the Julia General
-registry — install with `Pkg.add("PackageName")`; newly public packages such as
-SMLMBaGoL install from GitHub until they're registered.
+automatic GPU acceleration with CPU fallback. All are registered in the Julia General
+registry — install any with `Pkg.add("PackageName")`.
 
 ## Packages
 
 | Package | Stage | What it does |
 | --- | --- | --- |
+| [SMLMAnalysis.jl](https://github.com/JuliaSMLM/SMLMAnalysis.jl) | Pipeline | End-to-end analysis from a single config: detection, fitting, filtering, frame connection, drift correction, and rendering, with provenance tracking. |
 | [SMLMData.jl](https://github.com/JuliaSMLM/SMLMData.jl) | Core | Shared data types: emitters, cameras, SMLD containers. |
 | [MicroscopePSFs.jl](https://github.com/JuliaSMLM/MicroscopePSFs.jl) | Core | 2D/3D point-spread-function models and pixel integration. |
 | [SMLMSim.jl](https://github.com/JuliaSMLM/SMLMSim.jl) | Simulation | Blinking super-resolution data and diffusion/tracking dynamics. |
@@ -33,8 +33,8 @@ SMLMBaGoL install from GitHub until they're registered.
 
 ```julia
 using Pkg
-Pkg.add(["SMLMData", "SMLMSim", "SMLMRender"])   # e.g. a simulate → render pipeline
-Pkg.add(url="https://github.com/JuliaSMLM/SMLMBaGoL.jl")  # not yet in the General registry
+Pkg.add("SMLMAnalysis")                          # the full detection → rendering pipeline
+Pkg.add(["SMLMData", "SMLMSim", "SMLMRender"])   # or individual building blocks
 ```
 
 Per-package docs live at `https://JuliaSMLM.github.io/<Package>.jl/stable` (e.g.
@@ -43,4 +43,4 @@ shared conventions (such as pixel indexing):
 [JuliaSMLM.github.io/SMLMDocs.jl/dev](https://JuliaSMLM.github.io/SMLMDocs.jl/dev/).
 
 Issues and pull requests are welcome on any repository — each is developed and
-versioned independently, most through the Julia General registry.
+versioned independently through the Julia General registry.
